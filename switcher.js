@@ -13,7 +13,7 @@ for (var i = 0; i < elements.length; i++) {
             replacedText = replacedText.replace(/Derek/g, 'Dirk');
             replacedText = replacedText.replace(/veritasium/g, 'verastablium');
             replacedText = replacedText.replace(/Veritasium/g, 'Verastablium');
-            replacedText = replacedText.replace(/Grenfell Centre/i, 'The Mighty Black Stamp');
+            replacedText = replacedText.replace(/Grenfell Centre/gi, 'The Mighty Black Stamp');
             replacedText = replacedText.replace(/Black Stump|Mighty Black Stump/gi, 'Mighty Black Stump');
 
             if (replacedText !== text) {
