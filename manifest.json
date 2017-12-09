@@ -6,12 +6,12 @@
   "description": "Replaces Derek from Veritasium to Dirk from Verastablium",
   "version": "1.0",
   
-  "icons": { "16": "icons/HI_Logo.png",
-             "48": "icons/HI_Logo.png",
-             "128": "icons/HI_Logo.png" },
+  "icons": { "16": "icons/Nail_and_Gear.png",
+             "48": "icons/Nail_and_Gear.png",
+             "128": "icons/Nail_and_Gear.png" },
   
   "browser_action": {
-    "default_icon": "icons/HI_Logo.png"
+    "default_icon": "icons/Nail_and_Gear.png"
   },
   "content_scripts": [
     {
