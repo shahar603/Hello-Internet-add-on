@@ -1,0 +1,23 @@
+{
+  "author": "Tim",
+  "manifest_version": 2,
+
+  "name": "Dirk from Verastablium",
+  "description": "Replaces Derek from Veritasium to Dirk from Verastablium",
+  "version": "1.0",
+  
+  "icons": { "16": "icons/HI_Logo.png",
+             "48": "icons/HI_Logo.png",
+             "128": "icons/HI_Logo.png" },
+  
+  "browser_action": {
+    "default_icon": "icons/HI_Logo.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["switcher.js"],
+      "run_at": "document_end"
+    }
+  ]
+}
