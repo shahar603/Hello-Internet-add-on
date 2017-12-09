@@ -9,12 +9,12 @@ for (var i = 0; i < elements.length; i++) {
 
         if (node.nodeType === 3) {
             var text = node.nodeValue;
-            var replacedText = text.replace(/[^D]derek/gi, 'drik');
-            replacedText = replacedText.replace(/Derek/gi, 'Dirk');
-            replacedText = replacedText.replace(/[^V]veritasium/gi, 'verastablium');
-            replacedText = replacedText.replace(/Veritasium/gi, 'Verastablium');
-            replacedText = replacedText.replace(/[Gg]renfell [Cc]entre/gi, 'The Mighty Black Stamp');
-            replacedText = replacedText.replace(/[Bb]lack [Ss]tump|[mM]ighty [bB]lack [sS]tump/gi, 'Mighty Black Stump');
+            var replacedText = text.replace(/derek/g, 'drik');
+            replacedText = replacedText.replace(/Derek/g, 'Dirk');
+            replacedText = replacedText.replace(/veritasium/g, 'verastablium');
+            replacedText = replacedText.replace(/Veritasium/g, 'Verastablium');
+            replacedText = replacedText.replace(/Grenfell Centre/i, 'The Mighty Black Stamp');
+            replacedText = replacedText.replace(/Black Stump|Mighty Black Stump/gi, 'Mighty Black Stump');
 
             if (replacedText !== text) {
                 element.replaceChild(document.createTextNode(replacedText), node);
