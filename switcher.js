@@ -1,25 +1,56 @@
 
-var elements = document.getElementsByTagName('*');
 
-for (var i = 0; i < elements.length; i++) {
-    var element = elements[i];
+const url = "data/WordsToReplace.json";
 
-    for (var j = 0; j < element.childNodes.length; j++) {
-        var node = element.childNodes[j];
 
-        if (node.nodeType === 3) {
-            var text = node.nodeValue;
-            var replacedText = text.replace(/derek/g, 'drik');
-            replacedText = replacedText.replace(/Derek/g, 'Dirk');
-            replacedText = replacedText.replace(/veritasium/g, 'verastablium');
-            replacedText = replacedText.replace(/Veritasium/g, 'Verastablium');
-            replacedText = replacedText.replace(/Grenfell Centre/gi, 'The Mighty Black Stamp');
-            replacedText = replacedText.replace(/Black Stump|Mighty Black Stump/gi, 'Mighty Black Stump');
 
-            if (replacedText !== text) {
-                element.replaceChild(document.createTextNode(replacedText), node);
+async function fetchAsync(url) {
+  // await response of fetch call
+  let response = await fetch(url);
+  // only proceed once promise is resolved
+  let data = await response.json();
+  // only proceed once second promise is resolved
+  return data;
+}
+
+
+function replaceWords(data){
+    "use strict"    
+    
+    let regexDict = data.regexDict;
+    
+    let elements = document.getElementsByTagName('*');
+    
+    for (let i = 0; i < elements.length; i++) {
+        let element = elements[i];
+    
+        for (let j = 0; j < element.childNodes.length; j++) {
+            let node = element.childNodes[j];
+    
+            if (node.nodeType === 3) {
+                let text = node.nodeValue;
+                let replacedText = (' ' + text).slice(1);
+                
+                for(let key in regexDict){
+                    let arr = key.split('/');
+                    replacedText = replacedText.replace(new RegExp(arr[0], arr[1]), regexDict[key]);        
+                }
+
+    
+                if (replacedText !== text) {
+                    element.replaceChild(document.createTextNode(replacedText), node);
+                }
             }
         }
     }
 }
 
+
+
+
+
+
+
+fetchAsync(chrome.runtime.getURL(url))
+    .then(data => replaceWords(data));
+  
